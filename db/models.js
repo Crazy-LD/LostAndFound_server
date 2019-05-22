@@ -35,6 +35,7 @@ const LostFoodSchema = mongoose.Schema({
   status: {type: Number}, // 当期那状态 0:正在找寻,1:已经找到,3:删除
   lName: {type: String, required: true},
   address: {type: String, required: true},
+  isLost: {type: Boolean, required: true},
   images: {type: Array},
   desc: {type: String},
   contact: {type: String},

@@ -49,7 +49,6 @@ router.post('/update', function (req, res) {
   const user = req.body;
   const userid = req.cookies.userid;
   if (!userid) {
-    console.log(userid);
     return res.send({code: 1, msg: '请先登录'})
   }
   UserModel.findByIdAndUpdate({_id: userid}, user, function (err, oldUser) {
@@ -108,7 +107,6 @@ router.post('/updatepassword', function (req, res) {
     return res.send({code: 1, msg: '请先登录'});
   }
   UserModel.update({_id: userid, password: md5(oldPassword)}, {password: md5(password)}, function (err, doc) {
-    console.log(doc);
     if (doc.nModified === 0) {
       return res.send({code: 1, msg: '原始密码错误'})
     } else {
@@ -123,26 +121,30 @@ router.post('/sendarticle', function (req, res) {
   form.uploadDir = './uploads';
   form.parse(req, (err, fields, files) => {
     if (!err) {
-      const {lName, address, contact, desc, imgCount} = fields;
+      const {lName, address, contact, desc, imgCount, isLost} = fields;
       let promise = new Promise((resolve, reject) => {
         let images = [];
-        for (let i=0; i<imgCount; i++) {
-          let avatarName = uuidv1();
-          let attrName = 'images' + i;
-          let extName = path.extname(files[attrName].name);
-          let oldPath =  './' + files[attrName].path;
-          let newPath =  './uploads/' + avatarName + extName;
-          let imgPath = avatarName +extName;
-          fs.rename(oldPath, newPath, (err) => {
-            if (err) {
-              reject('改名错误');
-            } else {
-              images.push(imgPath);
-              if (i === imgCount-1) {
-                resolve(images);
+        if (files.images0) {
+          for (let i=0; i<imgCount; i++) {
+            let avatarName = uuidv1();
+            let attrName = 'images' + i;
+            let extName = path.extname(files[attrName].name);
+            let oldPath =  './' + files[attrName].path;
+            let newPath =  './uploads/' + avatarName + extName;
+            let imgPath = avatarName +extName;
+            fs.rename(oldPath, newPath, (err) => {
+              if (err) {
+                reject('改名错误');
+              } else {
+                images.push(imgPath);
+                if (i === imgCount-1) {
+                  resolve(images);
+                }
               }
-            }
-          })
+            })
+          }
+        } else {
+          resolve(images);
         }
       });
       promise.then(images => {
@@ -151,9 +153,9 @@ router.post('/sendarticle', function (req, res) {
             const {username, header, name} = user;
             const create_time = Date.now();
             const _lostId = uuidv1();
-            new LostFoodModel({_lostId, username, lName, images, address, desc, contact, create_time, status: 0}).save(function (err) {
+            new LostFoodModel({_lostId, username, lName, images, address, desc, contact, create_time, status: 0, isLost}).save(function (err) {
               if (!err) {
-                return res.send({code: 0, data: {header, name, images, contact, desc, address, status: 0, lName, create_time, _lostId}})
+                return res.send({code: 0, data: {header, name, images, contact, desc, address, status: 0, lName, create_time, _lostId, isLost}})
               }
             })
           }
@@ -177,18 +179,20 @@ router.get('/article', function (req, res) {
       if (!err) {
         const losts = lostList.reduce((losts, lost) => {
           losts.push({
-              _lostId: lost._lostId,
-              _id: users[lost.username]._id,
-              status: lost.status,
-              name: users[lost.username].name,
-              header: users[lost.username].header,
-              lName: lost.lName,
-              address: lost.address,
-              contact: lost.contact,
-              images: lost.images,
-              desc: lost.desc,
-              create_time: lost.create_time
-            });
+            _lostId: lost._lostId,
+            _id: users[lost.username]._id,
+            status: lost.status,
+            name: users[lost.username].name,
+            header: users[lost.username].header,
+            lName: lost.lName,
+            address: lost.address,
+            contact: lost.contact,
+            images: lost.images,
+            desc: lost.desc,
+            create_time: lost.create_time,
+            isLost: lost.isLost
+          });
+
           return losts;
         }, []);
         return res.send({code: 0, data: losts})
