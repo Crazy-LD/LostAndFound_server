@@ -1,5 +1,5 @@
 {
-  "name": "gzhipin-server",
+  "name": "lostAndFound-server",
   "version": "0.0.0",
   "private": true,
   "scripts": {
@@ -11,11 +11,16 @@
     "debug": "~2.6.9",
     "ejs": "~2.5.7",
     "express": "~4.16.0",
+    "express-session": "^1.16.1",
     "formidable": "^1.2.1",
     "http-errors": "~1.6.2",
+    "js-base64": "^2.5.1",
+    "moment": "^2.24.0",
     "mongoose": "^5.4.15",
     "morgan": "^1.9.1",
+    "request": "^2.88.0",
     "socket.io": "^2.2.0",
+    "svg-captcha": "^1.4.0",
     "uuid": "^3.3.2"
   },
   "devDependencies": {

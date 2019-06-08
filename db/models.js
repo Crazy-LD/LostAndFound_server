@@ -11,7 +11,7 @@ const UserSchema = mongoose.Schema({
   password: {type: String, required: true}, // 密码
   name: {type: String},
   header: {type: String}, // 头像名称
-  signature: {type: String} // 签名
+  phone: {type: String} // 手机号
 });
 const UserModel = new mongoose.model('user', UserSchema);
 exports.UserModel = UserModel;

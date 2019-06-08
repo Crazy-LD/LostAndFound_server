@@ -1,10 +1,15 @@
-let express = require('express');
-let router = express.Router();
-let formidable = require('formidable');
-let uuidv1 = require('uuid');
-let fs = require('fs');
-let path = require('path');
-const md5 = require('blueimp-md5');
+var express = require('express');
+var router = express.Router();
+var formidable = require('formidable');
+var uuidv1 = require('uuid');
+var fs = require('fs');
+var path = require('path');
+var md5 = require('blueimp-md5');
+var svgCaptcha = require('svg-captcha');
+const sms_util = require('../util/sms_util');
+
+const globalUser = {};
+
 const {
   UserModel,
   ChatModel,
@@ -35,6 +40,10 @@ router.post('/register', function (req, res) {
 /* 用户登录*/
 router.post('/login', function (req, res) {
   const {username, password} = req.body;
+  const captcha = req.body.captcha.toLowerCase();
+  if (captcha !== req.session.captcha) {
+    return res.send({code: 1, msg: '验证码错误'})
+  }
   UserModel.findOne({username, password: md5(password)}, filter, function (err, user) {
     if (!user) {
       res.send({code: 1, msg: '用户名或密码错误!'});
@@ -44,6 +53,92 @@ router.post('/login', function (req, res) {
     }
   })
 });
+/*获取图形验证码*/
+router.get('/captcha', function (req, res) {
+  var captcha = svgCaptcha.create({
+    ignoreChars: '0o1l',
+    noise: 2,
+    color: true
+  });
+  req.session.captcha = captcha.text.toLowerCase();
+  res.type('svg');
+  res.status(200).send(captcha.data);
+});
+/*获取短信*/
+router.get('/sendcode', function (req, res, next) {
+  //1. 获取请求参数数据
+  var phone = req.query.phone;
+  //2. 处理数据
+  //生成验证码(6位随机数)
+  console.log(phone, 'phone');
+  var code = sms_util.randomCode(6);
+  //发送给指定的手机号
+  // console.log(`向${phone}发送验证码短信: ${code}`);
+  sms_util.sendCode(phone, code, function (success) {//success表示是否成功
+    if (success) {
+      globalUser[phone] = code;
+      console.log(code, '绑定', globalUser[phone]);
+      // console.log('保存验证码: ', phone, code);
+      res.send({"code": 0})
+    } else {
+      //3. 返回响应数据
+      res.send({"code": 1, msg: '短信验证码发送失败'})
+    }
+  })
+});
+/*通过短信登录*/
+router.post('/login_sms', function (req, res, next) {
+  var phone = req.body.phone;
+  var code = req.body.code;
+  console.log('/login_sms', phone, code);
+  if (globalUser[phone] !== code) {
+    res.send({code: 1, msg: '手机号或验证码不正确'});
+    return;
+  }
+  //删除保存的code
+  delete globalUser[phone];
+  UserModel.findOne({phone}, filter, function (err, user) {
+    if (user) {
+      res.cookie('userid', user._id, {maxAge: 1000*60*60*24*7});
+      res.send({code: 0, data: user})
+    } else {
+      res.send({code: 1, msg: '手机号没有绑定'});
+    }
+  })
+});
+/*添加短信*/
+router.post('/addphone', function (req, res) {
+  const userid = req.cookies.userid;
+  const {phone, code} = req.body;
+  console.log(phone, globalUser);
+  if (!userid) {
+    return res.send({code: 1, msg: '请先登录'})
+  }
+  if (globalUser[phone] !== code) {
+    res.send({code: 1, msg: '手机号或验证码不正确'});
+    return;
+  }
+  UserModel.findOne({phone}, function (err, user) {
+    if (user) {
+      return res.send({code: 1, msg: '该手机号已经注册'})
+    } else {
+      UserModel.findByIdAndUpdate({_id: userid}, {phone}, function (err, oldUser) {
+        if (err) {
+          return res.send({code: 1, msg: '请先登录'})
+        }
+        if (!oldUser) {
+          res.clearCookie('userid');
+          res.send({code: 1, msg: '请先登录'})
+        } else {
+          const {username, name, header} = oldUser;
+          let data = {username, name, header, phone};
+          res.send({code: 0, data})
+        }
+      })
+    }
+  });
+});
+
 /* 用户更新信息 */
 router.post('/update', function (req, res) {
   const user = req.body;
@@ -178,6 +273,8 @@ router.get('/article', function (req, res) {
     LostFoodModel.find(function (err, lostList) {
       if (!err) {
         const losts = lostList.reduce((losts, lost) => {
+          let images = [...lost.images];
+          images = images.map(item => 'http://localhost:4000/' + item)
           losts.push({
             _lostId: lost._lostId,
             _id: users[lost.username]._id,
@@ -187,7 +284,7 @@ router.get('/article', function (req, res) {
             lName: lost.lName,
             address: lost.address,
             contact: lost.contact,
-            images: lost.images,
+            images,
             desc: lost.desc,
             create_time: lost.create_time,
             isLost: lost.isLost
@@ -213,6 +310,5 @@ router.post('/changestatus', function (req, res) {
     }
   })
 });
-
 
 module.exports = router;
