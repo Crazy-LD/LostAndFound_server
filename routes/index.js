@@ -16,8 +16,7 @@ const {
   LostFoodModel
 } = require('../db/models');
 const filter = {password: 0, __v: 0};
-
-
+const IMAGE_BASE_PATH = 'http://132.232.220.219/before/other/projects/lostAndFound/lostAndFound-server/uploads/';
 /* 用户注册*/
 router.post('/register', function (req, res) {
   const {username, password} = req.body;
@@ -70,14 +69,13 @@ router.get('/sendcode', function (req, res, next) {
   var phone = req.query.phone;
   //2. 处理数据
   //生成验证码(6位随机数)
-  console.log(phone, 'phone');
   var code = sms_util.randomCode(6);
   //发送给指定的手机号
   // console.log(`向${phone}发送验证码短信: ${code}`);
   sms_util.sendCode(phone, code, function (success) {//success表示是否成功
     if (success) {
       globalUser[phone] = code;
-      console.log(code, '绑定', globalUser[phone]);
+      console.log( '绑定', globalUser[phone]);
       // console.log('保存验证码: ', phone, code);
       res.send({"code": 0})
     } else {
@@ -110,7 +108,6 @@ router.post('/login_sms', function (req, res, next) {
 router.post('/addphone', function (req, res) {
   const userid = req.cookies.userid;
   const {phone, code} = req.body;
-  console.log(phone, globalUser);
   if (!userid) {
     return res.send({code: 1, msg: '请先登录'})
   }
@@ -250,6 +247,9 @@ router.post('/sendarticle', function (req, res) {
             const _lostId = uuidv1();
             new LostFoodModel({_lostId, username, lName, images, address, desc, contact, create_time, status: 0, isLost}).save(function (err) {
               if (!err) {
+                images.forEach((item, index) => {
+                  images[index] = IMAGE_BASE_PATH + item;
+                });
                 return res.send({code: 0, data: {header, name, images, contact, desc, address, status: 0, lName, create_time, _lostId, isLost}})
               }
             })
@@ -274,7 +274,7 @@ router.get('/article', function (req, res) {
       if (!err) {
         const losts = lostList.reduce((losts, lost) => {
           let images = [...lost.images];
-          images = images.map(item => 'http://localhost:4000/' + item)
+          images = images.map(item => IMAGE_BASE_PATH + item)
           losts.push({
             _lostId: lost._lostId,
             _id: users[lost.username]._id,
@@ -289,7 +289,6 @@ router.get('/article', function (req, res) {
             create_time: lost.create_time,
             isLost: lost.isLost
           });
-
           return losts;
         }, []);
         return res.send({code: 0, data: losts})
