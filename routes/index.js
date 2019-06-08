@@ -16,7 +16,8 @@ const {
   LostFoodModel
 } = require('../db/models');
 const filter = {password: 0, __v: 0};
-const IMAGE_BASE_PATH = 'http://132.232.220.219/before/other/projects/lostAndFound/lostAndFound-server/uploads/';
+// const IMAGE_BASE_PATH = 'http://132.232.220.219/before/other/projects/lostAndFound/lostAndFound-server/uploads/';
+const IMAGE_BASE_PATH = '';
 /* 用户注册*/
 router.post('/register', function (req, res) {
   const {username, password} = req.body;
@@ -104,7 +105,7 @@ router.post('/login_sms', function (req, res, next) {
     }
   })
 });
-/*添加短信*/
+/*添加手机号*/
 router.post('/addphone', function (req, res) {
   const userid = req.cookies.userid;
   const {phone, code} = req.body;
@@ -127,15 +128,43 @@ router.post('/addphone', function (req, res) {
           res.clearCookie('userid');
           res.send({code: 1, msg: '请先登录'})
         } else {
-          const {username, name, header} = oldUser;
-          let data = {username, name, header, phone};
+          const {username, name, header, _id} = oldUser;
+          let data = {username, name, header, phone, _id};
           res.send({code: 0, data})
         }
       })
     }
   });
 });
-
+/*取消绑定手机号*/
+router.post('/removephone', function (req, res) {
+  const userid = req.cookies.userid;
+  const {phone, code} = req.body;
+  if (!userid) {
+    return res.send({code: 1, msg: '请先登录'})
+  }
+  if (globalUser[phone] !== code) {
+    res.send({code: 1, msg: '验证码不正确'});
+    return;
+  }
+  UserModel.findOne({phone}, function (err, user) {
+    if (user) {
+      UserModel.findByIdAndUpdate({_id: userid}, {phone: ''}, function (err, oldUser) {
+        if (err) {
+          return res.send({code: 1, msg: '请先登录'})
+        }
+        if (!oldUser) {
+          res.clearCookie('userid');
+          res.send({code: 1, msg: '请先登录'})
+        } else {
+          const {username, name, header, _id} = oldUser;
+          let data = {username, name, header,  _id};
+          res.send({code: 0, data})
+        }
+      })
+    }
+  });
+});
 /* 用户更新信息 */
 router.post('/update', function (req, res) {
   const user = req.body;
@@ -309,5 +338,6 @@ router.post('/changestatus', function (req, res) {
     }
   })
 });
+
 
 module.exports = router;

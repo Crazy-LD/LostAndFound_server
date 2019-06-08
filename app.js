@@ -20,9 +20,10 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(express.static(path.join(__dirname, 'uploads')));
-
+// const allowOrigin = 'http://132.232.220.219';
+const allowOrigin = 'http://localhost:3000';
 app.all('*', function (req, res, next) {
-  res.header('Access-Control-Allow-Origin', 'http://132.232.220.219'); //
+  res.header('Access-Control-Allow-Origin', allowOrigin); //
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   res.header('Access-Control-Allow-Methods', '*');
   res.header('Content-Type', 'application/json;charset=utf-8');
