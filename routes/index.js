@@ -7,8 +7,10 @@ var path = require('path');
 var md5 = require('blueimp-md5');
 var svgCaptcha = require('svg-captcha');
 const sms_util = require('../util/sms_util');
+var allUser = require('../public/javascripts/allUser');
 
 const globalUser = {};
+// const allUser = {};
 
 const {
   UserModel,
@@ -28,6 +30,7 @@ router.post('/register', function (req, res) {
       new UserModel({username, password: md5(password)}).save(function (err, user) {
         // 生成一个 cookie(userid: user._id), 并交给浏览器保存
         res.cookie('userid', user._id, {maxAge: 1000*60*60*24});
+        allUser[username] = true;
         const data = {
           username,
           _id: user._id
@@ -48,8 +51,15 @@ router.post('/login', function (req, res) {
     if (!user) {
       res.send({code: 1, msg: '用户名或密码错误!'});
     } else {
-      res.cookie('userid', user._id, {maxAge: 1000*60*60*24*7});
-      res.send({code: 0, data: user});
+      console.log('username', username, 'allUser', allUser[username]);
+      if (!allUser[username]) {
+        allUser[username] = true;
+        console.log('allUser', allUser[username]);
+        res.cookie('userid', user._id, {maxAge: 1000*60*60*24*7});
+        res.send({code: 0, data: user});
+      } else {
+        res.send({code: 1, msg: '用户已经登录'});
+      }
     }
   })
 });
@@ -98,8 +108,14 @@ router.post('/login_sms', function (req, res, next) {
   delete globalUser[phone];
   UserModel.findOne({phone}, filter, function (err, user) {
     if (user) {
-      res.cookie('userid', user._id, {maxAge: 1000*60*60*24*7});
-      res.send({code: 0, data: user})
+      let username = user.username;
+      if (!allUser[username]) {
+        allUser[username] = true;
+        res.cookie('userid', user._id, {maxAge: 1000*60*60*24*7});
+        res.send({code: 0, data: user});
+      } else {
+        res.send({code: 1, msg: '用户已经登录'});
+      }
     } else {
       res.send({code: 1, msg: '手机号没有绑定'});
     }
@@ -195,8 +211,9 @@ router.get('/user', function (req, res) {
   UserModel.findOne({_id: userid}, filter, function (error, user) {
     if (!user) {
       return res.send({code: 1, msg: '请先登录'})
+    } else {
+      res.send({code: 0, data: user});
     }
-    res.send({code: 0, data: user});
   })
 });
 /* 获取消息列表 */
@@ -338,6 +355,11 @@ router.post('/changestatus', function (req, res) {
     }
   })
 });
-
+/*退出登录*/
+router.post('/logout', function (req, res) {
+  const {username} = req.body;
+  delete allUser[username];
+  res.send({code: 0});
+});
 
 module.exports = router;

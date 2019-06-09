@@ -2,11 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="44857852-be03-4fc0-a993-3ed0ee70c54d" name="Default" comment="">
+      <change afterPath="$PROJECT_DIR$/public/javascripts/allUser.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/mongoSettings.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/mongoSettings.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/bin/www" beforeDir="false" afterPath="$PROJECT_DIR$/bin/www" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/routes/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/util/sms_util.js" beforeDir="false" afterPath="$PROJECT_DIR$/util/sms_util.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -20,125 +20,39 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="models.js" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/db/models.js">
+      <file leaf-file-name="allUser.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/public/javascripts/allUser.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="253">
-              <caret line="9" column="10" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="10" />
+            <state relative-caret-position="66">
+              <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="index.js" pinned="false" current-in-tab="false">
+      <file leaf-file-name="index.js" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/routes/index.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="159" column="14" selection-start-line="159" selection-start-column="10" selection-end-line="159" selection-end-column="14" />
+            <state relative-caret-position="-6618">
+              <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
               <folding>
-                <element signature="e#595#604#0" />
-                <element signature="e#650#1153#0" />
-                <element signature="e#746#1150#0" />
-                <element signature="e#762#810#0" />
-                <element signature="e#816#1146#0" />
-                <element signature="e#901#1139#0" />
-                <element signature="e#1040#1095#0" />
-                <element signature="e#1156#1165#0" />
-                <element signature="e#1208#1670#0" />
-                <element signature="e#1340#1390#0" />
-                <element signature="e#1477#1667#0" />
-                <element signature="e#1494#1546#0" />
-                <element signature="e#1552#1663#0" />
-                <element signature="e#1673#1684#0" />
-                <element signature="e#1728#1937#0" />
-                <element signature="e#1764#1824#0" />
-                <element signature="e#1940#1948#0" />
-                <element signature="e#2050#2059#0" />
-                <element signature="e#2116#2127#0" />
-                <element signature="e#2227#2500#0" />
-                <element signature="e#2261#2419#0" />
-                <element signature="e#2425#2496#0" />
-                <element signature="e#2506#2516#0" />
-                <element signature="e#2569#3056#0" />
-                <element signature="e#2705#2766#0" />
-                <element signature="e#2867#3053#0" />
-                <element signature="e#2883#2993#0" />
-                <element signature="e#2999#3049#0" />
-                <element signature="e#3113#3936#0" />
-                <element signature="e#3201#3250#0" />
-                <element signature="e#3285#3346#0" />
-                <element signature="e#3397#3932#0" />
-                <element signature="e#3413#3470#0" />
-                <element signature="e#3476#3928#0" />
-                <element signature="e#3560#3921#0" />
-                <element signature="e#3579#3640#0" />
-                <element signature="e#3663#3754#0" />
-                <element signature="e#3760#3913#0" />
-                <element signature="e#3940#3952#0" />
-                <element signature="e#4075#4124#0" />
-                <element signature="e#4215#4268#0" />
-                <element signature="e#4515#4527#0" />
-                <element signature="e#4568#4852#0" />
-                <element signature="e#4622#4671#0" />
-                <element signature="e#4738#4849#0" />
-                <element signature="e#4755#4808#0" />
-                <element signature="e#4855#4867#0" />
-                <element signature="e#4911#5329#0" />
-                <element signature="e#4992#5326#0" />
-                <element signature="e#5045#5161#0" />
-                <element signature="e#5263#5321#0" />
-                <element signature="e#5332#5345#0" />
-                <element signature="e#5390#5598#0" />
-                <element signature="e#5545#5595#0" />
-                <element signature="e#5601#5611#0" />
-                <element signature="e#5663#6054#0" />
-                <element signature="e#5761#5811#0" />
-                <element signature="e#5921#6051#0" />
-                <element signature="e#5952#6007#0" />
-                <element signature="e#6013#6047#0" />
-                <element signature="e#6057#6065#0" />
-                <element signature="e#6114#8082#0" />
-                <element signature="e#6271#8079#0" />
-                <element signature="e#6287#8023#0" />
-                <element signature="e#6414#7188#0" />
-                <element signature="e#6468#7136#0" />
-                <element signature="e#6511#7126#0" />
-                <element signature="e#6871#7113#0" />
-                <element signature="e#6896#6945#0" />
-                <element signature="e#6951#7099#0" />
-                <element signature="e#7029#7083#0" />
-                <element signature="e#7142#7180#0" />
-                <element signature="e#7220#7945#0" />
-                <element signature="e#7284#7936#0" />
-                <element signature="e#7306#7926#0" />
-                <element signature="e#7583#7913#0" />
-                <element signature="e#7609#7899#0" />
-                <element signature="e#7659#7736#0" />
-                <element signature="e#7959#8016#0" />
-                <element signature="e#8029#8075#0" />
-                <element signature="e#8085#8098#0" />
-                <element signature="e#8142#9222#0" />
-                <element signature="e#8185#9219#0" />
-                <element signature="e#8237#8348#0" />
-                <element signature="e#8403#9214#0" />
-                <element signature="e#8421#9145#0" />
-                <element signature="e#8478#9083#0" />
-                <element signature="e#8604#9047#0" />
-                <element signature="e#9151#9208#0" />
-                <element signature="e#9225#9235#0" />
-                <element signature="e#9285#9520#0" />
-                <element signature="e#9389#9517#0" />
-                <element signature="e#9420#9473#0" />
-                <element signature="e#9479#9513#0" />
+                <element signature="e#615#624#0" />
+                <element signature="e#670#1207#0" />
+                <element signature="e#766#1204#0" />
+                <element signature="e#782#830#0" />
+                <element signature="e#836#1200#0" />
+                <element signature="e#921#1193#0" />
+                <element signature="e#1094#1149#0" />
+                <element signature="e#1210#1219#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="sms_util.js" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/util/sms_util.js">
+      <file leaf-file-name="app.js" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="505">
-              <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+            <state relative-caret-position="255">
+              <caret line="59" column="20" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="20" />
             </state>
           </provider>
         </entry>
@@ -160,9 +74,10 @@
       <find>users</find>
       <find>image</find>
       <find>imag</find>
-      <find>console</find>
       <find>oldUser</find>
       <find>cons</find>
+      <find>console</find>
+      <find>session</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -177,12 +92,13 @@
         <option value="$PROJECT_DIR$/README.md" />
         <option value="$PROJECT_DIR$/package-lock.json" />
         <option value="$PROJECT_DIR$/db/models.js" />
-        <option value="$PROJECT_DIR$/bin/www" />
         <option value="$PROJECT_DIR$/test.js" />
         <option value="$PROJECT_DIR$/package.json" />
-        <option value="$PROJECT_DIR$/app.js" />
-        <option value="$PROJECT_DIR$/routes/index.js" />
         <option value="$PROJECT_DIR$/util/sms_util.js" />
+        <option value="$PROJECT_DIR$/app.js" />
+        <option value="$PROJECT_DIR$/bin/www" />
+        <option value="$PROJECT_DIR$/public/javascripts/allUser.js" />
+        <option value="$PROJECT_DIR$/routes/index.js" />
       </list>
     </option>
   </component>
@@ -209,9 +125,9 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="154" />
-    <option name="y" value="45" />
-    <option name="width" value="1692" />
+    <option name="x" value="462" />
+    <option name="y" value="87" />
+    <option name="width" value="1422" />
     <option name="height" value="1042" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -231,7 +147,7 @@
             <path>
               <item name="lostAndFound-server" type="b2602c69:ProjectViewProjectNode" />
               <item name="lostAndFound-server" type="462c0819:PsiDirectoryNode" />
-              <item name="util" type="462c0819:PsiDirectoryNode" />
+              <item name="routes" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -327,7 +243,11 @@
       <workItem from="1559195463085" duration="627000" />
       <workItem from="1559351989810" duration="39000" />
       <workItem from="1559884015721" duration="16374000" />
-      <workItem from="1559964487926" duration="14931000" />
+      <workItem from="1559964487926" duration="17640000" />
+      <workItem from="1560006271978" duration="2673000" />
+      <workItem from="1560053007175" duration="329000" />
+      <workItem from="1560060129857" duration="2234000" />
+      <workItem from="1560068606209" duration="3249000" />
     </task>
     <task id="LOCAL-00001" summary="增加绑定手机功能">
       <created>1559978459020</created>
@@ -343,26 +263,33 @@
       <option name="project" value="LOCAL" />
       <updated>1559995753502</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="增加解除绑定的功能">
+      <created>1560003138940</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1560003138940</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="156968000" />
+    <option name="totallyTimeSpent" value="168162000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="1936" height="1096" extended-state="6" />
+    <frame x="462" y="87" width="1422" height="1042" extended-state="1" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.1359275" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.16152717" />
       <window_info anchor="bottom" id="TODO" order="6" />
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="7" side_tool="true" />
-      <window_info anchor="bottom" id="Version Control" order="7" weight="0.2631016" />
+      <window_info anchor="bottom" id="Version Control" order="7" weight="0.2628918" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Run" order="2" weight="0.3290461" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="right" id="Mongo Explorer" order="3" weight="0.25" />
-      <window_info anchor="bottom" id="Terminal" order="7" visible="true" weight="0.3114257" />
+      <window_info anchor="right" id="Mongo Explorer" order="3" weight="0.2531983" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="7" visible="true" weight="0.42352942" />
       <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -409,7 +336,8 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="增加绑定手机功能" />
     <MESSAGE value="生产环境第一个版本" />
-    <option name="LAST_COMMIT_MESSAGE" value="生产环境第一个版本" />
+    <MESSAGE value="增加解除绑定的功能" />
+    <option name="LAST_COMMIT_MESSAGE" value="增加解除绑定的功能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -417,13 +345,6 @@
     </breakpoint-manager>
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/db/models.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="396">
-          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/routes/index.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="3102">
@@ -679,31 +600,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/db/db_test.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="198">
-          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/bin/www">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2013">
-          <caret line="61" lean-forward="true" selection-start-line="61" selection-end-line="61" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="165">
           <caret line="5" column="21" selection-start-line="5" selection-start-column="21" selection-end-line="5" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="66">
-          <caret line="23" column="42" selection-start-line="23" selection-start-column="42" selection-end-line="23" selection-end-column="42" />
         </state>
       </provider>
     </entry>
@@ -716,118 +616,60 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/db/models.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
+        <state relative-caret-position="297">
           <caret line="9" column="10" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="10" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/routes/index.js">
+    <entry file="file://$PROJECT_DIR$/db/db_test.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="159" column="14" selection-start-line="159" selection-start-column="10" selection-end-line="159" selection-end-column="14" />
-          <folding>
-            <element signature="e#595#604#0" />
-            <element signature="e#650#1153#0" />
-            <element signature="e#746#1150#0" />
-            <element signature="e#762#810#0" />
-            <element signature="e#816#1146#0" />
-            <element signature="e#901#1139#0" />
-            <element signature="e#1040#1095#0" />
-            <element signature="e#1156#1165#0" />
-            <element signature="e#1208#1670#0" />
-            <element signature="e#1340#1390#0" />
-            <element signature="e#1477#1667#0" />
-            <element signature="e#1494#1546#0" />
-            <element signature="e#1552#1663#0" />
-            <element signature="e#1673#1684#0" />
-            <element signature="e#1728#1937#0" />
-            <element signature="e#1764#1824#0" />
-            <element signature="e#1940#1948#0" />
-            <element signature="e#2050#2059#0" />
-            <element signature="e#2116#2127#0" />
-            <element signature="e#2227#2500#0" />
-            <element signature="e#2261#2419#0" />
-            <element signature="e#2425#2496#0" />
-            <element signature="e#2506#2516#0" />
-            <element signature="e#2569#3056#0" />
-            <element signature="e#2705#2766#0" />
-            <element signature="e#2867#3053#0" />
-            <element signature="e#2883#2993#0" />
-            <element signature="e#2999#3049#0" />
-            <element signature="e#3113#3936#0" />
-            <element signature="e#3201#3250#0" />
-            <element signature="e#3285#3346#0" />
-            <element signature="e#3397#3932#0" />
-            <element signature="e#3413#3470#0" />
-            <element signature="e#3476#3928#0" />
-            <element signature="e#3560#3921#0" />
-            <element signature="e#3579#3640#0" />
-            <element signature="e#3663#3754#0" />
-            <element signature="e#3760#3913#0" />
-            <element signature="e#3940#3952#0" />
-            <element signature="e#4075#4124#0" />
-            <element signature="e#4215#4268#0" />
-            <element signature="e#4515#4527#0" />
-            <element signature="e#4568#4852#0" />
-            <element signature="e#4622#4671#0" />
-            <element signature="e#4738#4849#0" />
-            <element signature="e#4755#4808#0" />
-            <element signature="e#4855#4867#0" />
-            <element signature="e#4911#5329#0" />
-            <element signature="e#4992#5326#0" />
-            <element signature="e#5045#5161#0" />
-            <element signature="e#5263#5321#0" />
-            <element signature="e#5332#5345#0" />
-            <element signature="e#5390#5598#0" />
-            <element signature="e#5545#5595#0" />
-            <element signature="e#5601#5611#0" />
-            <element signature="e#5663#6054#0" />
-            <element signature="e#5761#5811#0" />
-            <element signature="e#5921#6051#0" />
-            <element signature="e#5952#6007#0" />
-            <element signature="e#6013#6047#0" />
-            <element signature="e#6057#6065#0" />
-            <element signature="e#6114#8082#0" />
-            <element signature="e#6271#8079#0" />
-            <element signature="e#6287#8023#0" />
-            <element signature="e#6414#7188#0" />
-            <element signature="e#6468#7136#0" />
-            <element signature="e#6511#7126#0" />
-            <element signature="e#6871#7113#0" />
-            <element signature="e#6896#6945#0" />
-            <element signature="e#6951#7099#0" />
-            <element signature="e#7029#7083#0" />
-            <element signature="e#7142#7180#0" />
-            <element signature="e#7220#7945#0" />
-            <element signature="e#7284#7936#0" />
-            <element signature="e#7306#7926#0" />
-            <element signature="e#7583#7913#0" />
-            <element signature="e#7609#7899#0" />
-            <element signature="e#7659#7736#0" />
-            <element signature="e#7959#8016#0" />
-            <element signature="e#8029#8075#0" />
-            <element signature="e#8085#8098#0" />
-            <element signature="e#8142#9222#0" />
-            <element signature="e#8185#9219#0" />
-            <element signature="e#8237#8348#0" />
-            <element signature="e#8403#9214#0" />
-            <element signature="e#8421#9145#0" />
-            <element signature="e#8478#9083#0" />
-            <element signature="e#8604#9047#0" />
-            <element signature="e#9151#9208#0" />
-            <element signature="e#9225#9235#0" />
-            <element signature="e#9285#9520#0" />
-            <element signature="e#9389#9517#0" />
-            <element signature="e#9420#9473#0" />
-            <element signature="e#9479#9513#0" />
-          </folding>
+        <state relative-caret-position="-297">
+          <caret line="6" column="3" lean-forward="true" selection-start-line="6" selection-start-column="3" selection-end-line="6" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/bin/www">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-561">
+          <caret line="28" column="20" lean-forward="true" selection-start-line="28" selection-start-column="20" selection-end-line="28" selection-end-column="20" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/util/sms_util.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="505">
-          <caret line="72" column="20" selection-start-line="72" selection-start-column="20" selection-end-line="72" selection-end-column="20" />
+        <state relative-caret-position="444">
+          <caret line="67" column="18" lean-forward="true" selection-start-line="67" selection-start-column="18" selection-end-line="67" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/public/javascripts/allUser.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="66">
+          <caret line="2" column="2" selection-start-line="2" selection-start-column="2" selection-end-line="2" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="59" column="20" selection-start-line="59" selection-start-column="17" selection-end-line="59" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/routes/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-6618">
+          <caret line="13" lean-forward="true" selection-start-line="13" selection-end-line="13" />
+          <folding>
+            <element signature="e#615#624#0" />
+            <element signature="e#670#1207#0" />
+            <element signature="e#766#1204#0" />
+            <element signature="e#782#830#0" />
+            <element signature="e#836#1200#0" />
+            <element signature="e#921#1193#0" />
+            <element signature="e#1094#1149#0" />
+            <element signature="e#1210#1219#0" />
+          </folding>
         </state>
       </provider>
     </entry>
